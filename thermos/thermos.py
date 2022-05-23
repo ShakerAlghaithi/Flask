@@ -24,7 +24,7 @@ def index():
     return render_template('index.html', new_bookmarks=new_bookmarks(5))
 
 @app.route('/add', methods=['GET', 'POST'])
-def add():      # no validation yet here
+def add():     
     form = bookmarkForm()
     if form.validate_on_submit():
         url = form.url.data
