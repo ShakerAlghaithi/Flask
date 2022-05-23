@@ -70,19 +70,19 @@ body {
    =================== */
 
 .header-container {
-    border-bottom: 20px solid #3498DB;
+    border-bottom: 20px solid #79e6c2;
 }
 
 .footer-container,
 .main aside {
-    border-top: 20px solid #3498db;
+    border-top: 20px solid #79e6c2;
 
 }
 
 .header-container,
 .footer-container,
 .main aside {
-    background: #326786;
+    background: #32896c;
 }
 
 .title {
@@ -109,7 +109,7 @@ nav a {
     font-weight: bold;
 
     color: white;
-    background: #0D3E5B;
+    background: #157455;
 }
 
 nav a:hover,
@@ -170,9 +170,23 @@ h1, h2, h3, h4, h5, h5 {
 .main aside h3, footer h3 {
   color: white;
 }
+/* flashed styling   */
+.flashes ul {
+    margin: 0 0;
+    background: #7cbf73;
+    color: #000;
 
+    list-style-type: none;
+    list-style: none;
+}
 
-
+.flashed ul {
+  background: #7cbf73;
+  color: #000;
+}
+ article.flashes {
+   margin-bottom: 1em;
+ }
 
 
 
