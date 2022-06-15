@@ -170,9 +170,7 @@ h1, h2, h3, h4, h5, h5 {
 .main aside h3, footer h3 {
   color: white;
 }
-/* ===================
-flashed styling
-=====================*/
+/* flashed styling   */
 .flashes ul {
     margin: 0 0;
     background: #7cbf73;
@@ -189,9 +187,18 @@ flashed styling
  article.flashes {
    margin-bottom: 1em;
  }
-
-
-
+.error, .error input {
+    color: red;
+}
+tr.error td ul {
+  margin-top: 0;
+}
+tr.submit button {
+  margin-top: 20px;
+}
+input, button {
+  margin-left: 10px;
+}
 
 
 
