@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -12,5 +13,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'th
 app.config['DEBUG']
 db = SQLAlchemy(app)
 
-import models
-import views
+#confugre authentication
+login_manager = LoginManager()
+login_manager.session_protection = "storng"
+login_manager.login_view= "login"
+login_manager.init_app(app)
+
+import thermos.models
+import thermos.views

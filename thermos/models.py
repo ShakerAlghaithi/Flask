@@ -1,7 +1,7 @@
 from datetime import datetime
 from sqlalchemy import desc
-from app_thermos import db
-
+from thermos import db
+from flask_login import UserMixin
 
 #creating the table for bookmark database.
 class Bookmark(db.Model):
@@ -17,7 +17,7 @@ class Bookmark(db.Model):
     def __repr__(self):
         return "<Bookmark '{}': '{}'>".format(self.description, self.url)
 #creating the table for user database.
-class User(db.Model):
+class User(db.Model, UserMixin):
     id= db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True)
     email = db.Column(db.String(120), unique=True)

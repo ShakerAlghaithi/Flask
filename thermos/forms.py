@@ -1,9 +1,8 @@
 # use pip install flask-wtf command to make it work
-#from flask_wtf import Form
+
 from flask_wtf import FlaskForm
-from wtforms.fields import StringField
-#from flask.ext.wtf.html5 import URLField
-#from flask_wtf.html5 import URLField
+from wtforms.fields import StringField, PasswordField, BooleanField, SubmitField
+
 from wtforms import URLField
 from wtforms.validators import DataRequired, url
 
@@ -22,3 +21,8 @@ class BookmarkForm(FlaskForm):
         if not self.description.data:
             self.description.data = self.url.data
         return True
+class LoginForm(FlaskForm):
+    username = StringField('Your Username: ', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Keep me logged in ')
+    submit = SubmitField('Log In')
