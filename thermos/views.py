@@ -1,31 +1,12 @@
-import os
 from datetime import datetime
-from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_sqlalchemy import SQLAlchemy  #pip install flask-sqlalchemy
-
-basedir = os.path.abspath(os.path.dirname(__file__))
-
-app = Flask(__name__)
-
-app.config['SECRET_KEY']= '\x85\x8a\x15\x8f\x8a\xe1\x0e\xca\x1b\\\xf1\xb7\xb8\xc7\xb5\x13\x1c\xe8s\x83\xb8\xfa\xe0\xb9'
-# setup sqlite for database and configuring the connection to it
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'thermos.db')
-db = SQLAlchemy(app)
-
-#removing old method
-# def store_bookmark(url, description):
-#     bookmarks.append(dict(
-#         url=url,
-#         description=description,
-#         user= "Alghaithi",
-#         date= datetime.utcnow()
-#
-#     ))
-
-# def new_bookmarks(num):
-#     return sorted(bookmarks, key=lambda bm: bm['date'], reverse=True)[:num]
+from flask import render_template,  redirect, url_for, flash
 from forms import BookmarkForm
-import models 
+from thermos import app, db
+from models import User, Bookmark
+
+#fake login
+def logged_in_user():
+    return User.query.filter_by(username='Abdul').first()
 
 @app.route('/')
 @app.route('/index')
@@ -45,6 +26,11 @@ def add():
         flash("Stored bookmark: '{}'".format(description))
         return redirect(url_for('index'))
     return render_template('add.html', form=form)
+@app.route('/user/<username>')
+def user(username):
+    user= User.query.filter_by(username=username).first_or_404()# filter_by will find the user if not return a 404 error
+    return render_template('user.html', user=user)
+
 
 @app.errorhandler(404)
 def page_not_found(e):

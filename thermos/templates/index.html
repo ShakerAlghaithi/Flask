@@ -16,19 +16,19 @@ Thermos -- Welcome
                 {% if new_bookmarks %}
                     <ul>
                         {% for bm in new_bookmarks %}
-                            <li>{{bm.user }} added <a href= "{{bm.url}}"> {{bm.url}} </a></li>
+                            <li><a href='{{ url_for('user', username =bm.user.username)}}'> added <a href= "{{bm.url}}"> {{bm.description}} </a></li>
                         {% endfor%}
                     </ul>
                 {% else %}
                     No bookmarks yet.
                 {% endif %}
         </section>
-        <section>
+        <!-- <section>
                 <h2> article section h2 </h2>
                 <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
         </section>
-
+ -->
 
 
     </article>
